@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd"
+       securityLevel="any"
+       https="true">
+  <meta>
+    <author>X Kerman</author>
+    <documentationURL>http://wedata.net/help/api</documentationURL>
+    <sampleQuery>select * from {table} where database_name = 'AutoPagerize'</sampleQuery>
+  </meta>
+  <bindings>
+    <select itemPath="" produces="JSON">
+      <urls>
+        <url>http://wedata.net/databases.json</url>
+        <url>http://wedata.net/databases/{database_name}.json</url>
+      </urls>
+      <inputs>
+        <key id="database_name" type="xs:string" paramType="path" required="false"/>
+      </inputs>
+    </select>
+  </bindings>
+</table>
