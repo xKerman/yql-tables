@@ -11,10 +11,15 @@
     <select itemPath="" produces="JSON">
       <urls>
         <url>http://wedata.net/databases.json</url>
+      </urls>
+      <inputs />
+    </select>
+    <select itemPath="" produces="JSON">
+      <urls>
         <url>http://wedata.net/databases/{database_name}.json</url>
       </urls>
       <inputs>
-        <key id="database_name" type="xs:string" paramType="path" required="false"/>
+        <key id="database_name" type="xs:string" paramType="path" />
       </inputs>
     </select>
   </bindings>
