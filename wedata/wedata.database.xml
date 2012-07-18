@@ -10,12 +10,6 @@
   <bindings>
     <select itemPath="" produces="JSON">
       <urls>
-        <url>http://wedata.net/databases.json</url>
-      </urls>
-      <inputs />
-    </select>
-    <select itemPath="" produces="JSON">
-      <urls>
         <url>http://wedata.net/databases/{database_name}.json</url>
       </urls>
       <inputs>
