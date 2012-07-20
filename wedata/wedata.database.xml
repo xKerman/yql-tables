@@ -5,16 +5,23 @@
   <meta>
     <author>X Kerman</author>
     <documentationURL>http://wedata.net/help/api</documentationURL>
-    <sampleQuery>select * from {table} where database_name = 'AutoPagerize'</sampleQuery>
+    <sampleQuery>select * from {table}</sampleQuery>
+    <sampleQuery>select * from {table} where name = 'AutoPagerize'</sampleQuery>
   </meta>
   <bindings>
-    <select itemPath="" produces="JSON">
+    <select itemPath="json" produces="JSON">
       <urls>
-        <url>http://wedata.net/databases/{database_name}.json</url>
+        <url>http://wedata.net/databases/{name}.json</url>
       </urls>
       <inputs>
-        <key id="database_name" type="xs:string" paramType="path" />
+        <key id="name" type="xs:string" paramType="path" required="true" />
       </inputs>
+    </select>
+    <select itemPath="json" produces="JSON">
+      <urls>
+        <url>http://wedata.net/databases.json</url>
+      </urls>
+      <inputs />
     </select>
   </bindings>
 </table>
