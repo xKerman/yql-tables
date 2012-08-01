@@ -62,7 +62,6 @@ if (res.status === 201) {
         status: res.status,
         url: res.headers['location']
     };
-    y.log(res.headers);
 }
 else {
     response.object = {
