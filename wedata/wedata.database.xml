@@ -72,5 +72,56 @@ else {
         ]]>
       </execute>
     </insert>
+    <update itemPath="" produces="JSON">
+      <urls>
+        <url>http://wedata.net/databases/{name}</url>
+      </urls>
+      <inputs>
+        <value id="api_key" type="xs:string" required="true" paramType="variable" private="true" />
+        <key id="name" type="xs:string" required="true" paramType="path" />
+        <value id="new_name" type="xs:string" required="false" paramType="variable" />
+        <value id="description" type="xs:string" required="false" paramType="variable" />
+        <value id="required_keys" type="xs:string" required="true" paramType="variable" />
+        <value id="optional_keys" type="xs:string" required="false" paramType="variable" />
+        <value id="permit_other_keys" type="xs:string" required="false" paramType="variable" />
+      </inputs>
+      <execute>
+        <![CDATA[
+if (typeof Object.keys !== 'function') {
+    Object.keys = function (obj) {
+        var hasOwn = Object.prototype.hasOwnProperty;
+        var keys = [];
+        for (var key in obj) {
+            if (hasOwn.call(obj, key)) {
+                keys.push(key);
+            }
+        }
+        return keys;
+    };
+}
+
+var urlencode = function (obj) {
+    var keys = Object.keys(obj);
+    return keys.map(function (key) {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
+    }).join('&');
+};
+
+var putdata = {
+    api_key: api_key,
+    'database[required_keys]': required_keys
+};
+if (new_name !== null) putdata['database[name]'] = new_name;
+if (description !== null) putdata['database[description]'] = description;
+if (optional_keys !== null) putdata['database[optional_keys]'] = optional_keys;
+if (permit_other_keys !== null) putdata['database[permit_other_keys]'] = permit_other_keys;
+var res = request.accept('text/plain').contentType('application/x-www-form-urlencoded; charset=utf-8').put(urlencode(putdata));
+response.object = {
+    status: res.status,
+    message: res.response
+};
+        ]]>
+      </execute>
+    </update>
   </bindings>
 </table>
