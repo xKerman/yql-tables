@@ -26,8 +26,7 @@
         <value id="optional_keys" type="xs:string" required="false" paramType="variable" />
         <value id="permit_other_keys" type="xs:string" required="false" paramType="variable" />
       </inputs>
-      <execute>
-        <![CDATA[
+      <execute><![CDATA[
 if (typeof Object.keys !== 'function') {
     Object.keys = function (obj) {
         var hasOwn = Object.prototype.hasOwnProperty;
@@ -69,8 +68,7 @@ else {
         message: res.response
     };
 }
-        ]]>
-      </execute>
+      ]]></execute>
     </insert>
     <update itemPath="" produces="JSON">
       <urls>
@@ -85,8 +83,7 @@ else {
         <value id="optional_keys" type="xs:string" required="false" paramType="variable" />
         <value id="permit_other_keys" type="xs:string" required="false" paramType="variable" />
       </inputs>
-      <execute>
-        <![CDATA[
+      <execute><![CDATA[
 if (typeof Object.keys !== 'function') {
     Object.keys = function (obj) {
         var hasOwn = Object.prototype.hasOwnProperty;
@@ -120,8 +117,7 @@ response.object = {
     status: res.status,
     message: res.response
 };
-        ]]>
-      </execute>
+      ]]></execute>
     </update>
   </bindings>
 </table>
