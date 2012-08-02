@@ -119,5 +119,18 @@ response.object = {
 };
       ]]></execute>
     </update>
+    <delete>
+      <urls>
+        <url>http://wedata.net/databases/{name}</url>
+      </urls>
+      <inputs>
+        <key id="api_key" type="xs:string" required="true" paramType="variable" private="true" />
+        <key id="name" type="xs:string" required="true" paramType="path" />
+      </inputs>
+      <execute><![CDATA[
+var res = request.accept('text/plain').query({api_key: api_key}).del();
+response.object = res;
+      ]]></execute>
+    </delete>
   </bindings>
 </table>
